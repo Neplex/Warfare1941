@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/*
+Add score to player when is trigger by player
+*/
+public class onTriggerAddScore : MonoBehaviour {
+
+	public int scoreToAdd = 10;
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+	private void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Player") {
+			GameState.Instance.addScorePlayer(scoreToAdd);
+			SoundState.Instance.powerUp();
+			Destroy(gameObject);
+		}
+	}
+}
